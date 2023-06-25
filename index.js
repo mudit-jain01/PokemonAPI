@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const Pokemon = require('./models/pokemons')//importing the model');
+const port = process.env.PORT || 3000
 
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -28,6 +28,6 @@ app.use('/pokemons', pokemonRouter)//using routes
 //     }
 // })//inserting data into database
 
-app.listen(3000, () => {
-    console.log("Server started")//listening to port
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`)//listening to port
 });
